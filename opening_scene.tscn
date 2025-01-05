@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://5yfakvuje0lo"]
+
+[ext_resource type="Script" path="res://opening_scene.gd" id="1_fmr5o"]
+[ext_resource type="FontFile" uid="uid://mfjdiq4xyeyj" path="res://in-your-face-joffrey/In your face, joffrey!.ttf" id="2_2fove"]
+
+[node name="OpeningScene" type="Node2D"]
+script = ExtResource("1_fmr5o")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="level_start" type="RichTextLabel" parent="."]
+offset_left = 331.0
+offset_top = 548.0
+offset_right = 688.0
+offset_bottom = 589.0
+theme_override_fonts/normal_font = ExtResource("2_2fove")
+theme_override_font_sizes/normal_font_size = 30
+
+[connection signal="property_list_changed" from="Timer" to="." method="_on_timer_property_list_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

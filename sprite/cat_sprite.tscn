@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcbprgvb36nk8"]
+
+[ext_resource type="Texture2D" uid="uid://dlf2lvc1m4rcs" path="res://sprite/cat sprite-20250103T084847Z-001/cat sprite/cat stand.png" id="1_iiydn"]
+[ext_resource type="Script" path="res://sprite/cat_sprite.gd" id="1_wlx6c"]
+[ext_resource type="Texture2D" uid="uid://bdq412llbrxh8" path="res://sprite/cat sprite-20250103T084847Z-001/cat sprite/cat walk.png" id="2_apkse"]
+[ext_resource type="Texture2D" uid="uid://cs42ii7ic6mg7" path="res://sprite/cat sprite-20250103T084847Z-001/cat sprite/sitting (tail wave 1).png" id="2_ld422"]
+[ext_resource type="Texture2D" uid="uid://rces2cje3j2y" path="res://sprite/cat sprite-20250103T084847Z-001/cat sprite/sitting (tail wave 1_eye move right).png" id="4_744ub"]
+[ext_resource type="Texture2D" uid="uid://c8u04qasen7om" path="res://sprite/cat sprite-20250103T084847Z-001/cat sprite/jumping.png" id="5_bckgy"]
+[ext_resource type="Texture2D" uid="uid://cmudufhavwm4x" path="res://sprite/cat sprite-20250103T084847Z-001/cat sprite/sitting (tail wave 1_eye move left).png" id="7_0vhm0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t4q1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ld422")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0vhm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_744ub")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bckgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bckgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bckgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bckgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bckgy")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iiydn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_apkse")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ppeu"]
+size = Vector2(69, 84)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(-141, 108)
+script = ExtResource("1_wlx6c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(365.232, 204.924)
+scale = Vector2(0.122986, 0.141083)
+sprite_frames = SubResource("SpriteFrames_t4q1y")
+animation = &"jump"
+frame_progress = 0.857384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(358.5, 206)
+shape = SubResource("RectangleShape2D_4ppeu")

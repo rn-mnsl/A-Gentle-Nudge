@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgvvmaax1cwxw"]
+
+[ext_resource type="Script" path="res://human_sprite.gd" id="1_xgist"]
+[ext_resource type="Texture2D" uid="uid://dbr5nlftcx62v" path="res://sprite/human sprite-20250103T084847Z-001/human sprite/still side walk (sad face).png" id="2_sf3e6"]
+[ext_resource type="Texture2D" uid="uid://deu4lk4eib255" path="res://sprite/human sprite-20250103T084847Z-001/human sprite/side walk 1 (sad face).png" id="3_ke73f"]
+[ext_resource type="Texture2D" uid="uid://dxvx8ck658vx6" path="res://sprite/human sprite-20250103T084847Z-001/human sprite/side walk 2 (sad face).png" id="4_t0pkt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_58nn4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sf3e6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ke73f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t0pkt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6bvfg"]
+radius = 41.0
+height = 268.0
+
+[node name="human_sprite" type="CharacterBody2D"]
+script = ExtResource("1_xgist")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(174.277, 451.404)
+scale = Vector2(0.30118, 0.338559)
+sprite_frames = SubResource("SpriteFrames_58nn4")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(177, 465)
+shape = SubResource("CapsuleShape2D_6bvfg")

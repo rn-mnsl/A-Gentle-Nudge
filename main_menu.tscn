@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy1fsxi6bpqlx"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ecfyh"]
+[ext_resource type="FontFile" uid="uid://mfjdiq4xyeyj" path="res://in-your-face-joffrey/In your face, joffrey!.ttf" id="2_4mdvx"]
+[ext_resource type="Texture2D" uid="uid://cmm14gfeoq1rn" path="res://in-your-face-joffrey/Title Screen.png" id="2_gp45v"]
+[ext_resource type="StyleBox" uid="uid://c7kdmwxkotjqa" path="res://button.tres" id="4_liwjx"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ecfyh")
+
+[node name="TitleScreen" type="Sprite2D" parent="."]
+position = Vector2(578, 323)
+scale = Vector2(0.598958, 0.596296)
+texture = ExtResource("2_gp45v")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -616.0
+offset_top = -316.0
+offset_right = -204.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -6.28319
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Start Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit Button")
+theme_override_fonts/font = ExtResource("2_4mdvx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_liwjx")
+text = "Start"
+
+[node name="Credit Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4mdvx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_liwjx")
+text = "Credits"
+
+[node name="Quit Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Start Button")
+theme_override_fonts/font = ExtResource("2_4mdvx")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("4_liwjx")
+text = "Quit"
+expand_icon = true
+
+[connection signal="pressed" from="VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credit Button" to="." method="_on_credit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
